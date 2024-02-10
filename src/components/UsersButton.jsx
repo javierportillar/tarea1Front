@@ -2,6 +2,6 @@ import React from 'react'
 
 export const UsersButton = () => {
   return (
-    <div>UsersButton</div>
+    <button> <a href="/users">Presiona Aquí para ver los usuarios.</a></button>
   )
 }
