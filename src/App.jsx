@@ -1,18 +1,12 @@
-import { useState } from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { Home } from './components/Home'
-import { UsersPage } from './components/UsersPage'
 import './App.css'
+import {RouterC} from './routes/router.component'
 
 function App() {
 
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/users" element={<UsersPage />} />
-      </Routes>
-    </Router>
+    <>
+      <RouterC/>
+    </>
   )
 }
 
