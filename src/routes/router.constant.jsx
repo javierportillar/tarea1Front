@@ -1,15 +1,13 @@
-import Home from '../pages/Home'
-import UsersPage from '../pages/Home'
+import {Home} from '../pages/Home'
+import {UsersPage} from '../pages/UsersPage'
 
 export const PageRoutes = [
   {
     path: '/',
-    component: Home,
-    exact: true
+    element: <Home/>,
   },
   {
     path:'/users',
-    component: UsersPage,
-    exact: false
+    element: <UsersPage/>,
   }
 ];
