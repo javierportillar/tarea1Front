@@ -1,7 +1,7 @@
-import React from 'react'
 
-export const CreateUserButton = () => {
+
+export const CreateUserButton = ({handleSubmit}) => {
   return (
-    <button>Guardar</button>
+    <button onClick={handleSubmit}>Guardar</button>
   )
 }
