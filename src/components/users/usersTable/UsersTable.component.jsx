@@ -11,6 +11,7 @@ export const UsersTable = () => {
             <td>name</td>
             <td>id</td>
             <td>age</td>
+            <td>options</td>
           </tr>
         </thead>
         <tbody>
