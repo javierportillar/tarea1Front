@@ -1,8 +1,9 @@
-import { useState } from "react"
-import { UsersTable } from "../components/users/usersTable/UsersTable.component"
-import { NewUserButton } from "../components/users/newUserButton/newUserButton.component"
-import { NewUser } from "../components/users/newUser/NewUser.component"
-import './usersHome.page.css'
+import { useState } from "react";
+import { UsersTable } from "../components/users/usersTable/UsersTable.component";
+import { NewUserButton } from "../components/users/newUserButton/newUserButton.component";
+import { NewUser } from "../components/users/newUser/NewUser.component";
+import { UserProvider } from "../context/userContext.context";
+import './usersHome.page.css';
 
 export const UsersHomePage = () => {
 
@@ -12,16 +13,18 @@ export const UsersHomePage = () => {
     setAddUserState(true);
   }
 
-  const closeCreateNewUser = ()=>{
+  const closeCreateNewUser = () => {
     setAddUserState(false);
   }
 
   return (
     <div className="user-page">
       <h1 className="user-tittle">Los usuarios son los siguientes:</h1>
-      <UsersTable />
-      <NewUserButton openCreateNewUserDiv={openCreateNewUserDiv} />
-      {addUserState && (<NewUser closeCreateNewUser={closeCreateNewUser} />)}
+      <UserProvider>
+        <UsersTable />
+        <NewUserButton openCreateNewUserDiv={openCreateNewUserDiv} />
+        {addUserState && (<NewUser closeCreateNewUser={closeCreateNewUser} />)}
+      </UserProvider>
     </div>
   )
 }
