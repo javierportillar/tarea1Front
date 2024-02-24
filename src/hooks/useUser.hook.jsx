@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { fetchUsersService, createUserService } from '../services/users.service';
 
 export const useUsers = () => {
@@ -6,7 +6,6 @@ export const useUsers = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // Cargar usuarios
   const loadUsers = () => {
     setLoading(true);
     fetchUsersService()
