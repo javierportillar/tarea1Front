@@ -8,16 +8,20 @@ export const UsersHomePage = () => {
 
   const [addUserState, setAddUserState] = useState(false);
 
-  const addNewUserDiv = () => {
-    setAddUserState(prevState => !prevState);
+  const openCreateNewUserDiv = () => {
+    setAddUserState(true);
+  }
+
+  const closeCreateNewUser = ()=>{
+    setAddUserState(false);
   }
 
   return (
     <div className="user-page">
       <h1 className="user-tittle">Los usuarios son los siguientes:</h1>
       <UsersTable />
-      <NewUserButton addNewUserDiv={addNewUserDiv} />
-      {addUserState && (<NewUser closeNewUser={addNewUserDiv} />)}
+      <NewUserButton openCreateNewUserDiv={openCreateNewUserDiv} />
+      {addUserState && (<NewUser closeCreateNewUser={closeCreateNewUser} />)}
     </div>
   )
 }
