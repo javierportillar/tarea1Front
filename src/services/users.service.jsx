@@ -1,10 +1,10 @@
 const url = 'http://localhost:4400/users'
 
-export const useUsersService = () => {
+export const fetchUsersService = () => {
   return fetch(url).then(datos => datos.json())
 }
 
-export const useCreateUserService = (userData) => {
+export const createUserService = (userData) => {
   return fetch(url, {
     method: 'POST',
     headers: {
