@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { useUsers } from "../../../hooks/useUser.hook";
+import { useUserContext } from "../../../context/userContext.context";
 import './UsersRow.component.css'
 
 export const UsersRow = () => {
-  const { loading, error, users } = useUsers();
+  const { loading, error, users } = useUserContext();
 
     if (loading) {
       return (

@@ -1,13 +1,13 @@
 import { useRef, useState } from 'react'
 import './NewUser.component.css'
 import { CreateUserButton } from '../createUserButton/createUserButton.component'
-import { useUsers } from '../../../hooks/useUser.hook'
+import { useUserContext } from '../../../context/userContext.context'
 
 export const NewUser = ({ closeCreateNewUser }) => {
 
   const nameRef = useRef(null);
   const ageRef = useRef(null);
-  const {loading, error, createUser } = useUsers();
+  const {loading, error, createUser } = useUserContext();
   
   const handleSubmit = () => {
     const data = {
