@@ -1,56 +1,42 @@
-import { useState, useEffect, useRef } from "react";
-import { useUsersService } from "../services/users.service";
-import { useCreateUserService } from "../services/users.service";
+import { useState, useEffect, useCallback } from 'react';
+import { fetchUsersService, createUserService } from '../services/users.service';
 
 export const useUsers = () => {
+  const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [data, setData] = useState([]);
 
-  useEffect(() => {
+  // Cargar usuarios
+  const loadUsers = () => {
     setLoading(true);
-    setError(null);
-    useUsersService()
+    fetchUsersService()
       .then(data => {
-        setData(data);
+        setUsers(data);
         setLoading(false);
       })
       .catch(err => {
         setError(err.message);
         setLoading(false);
       });
-  }, []);
+  };
 
-  return { loading, error, data };
-}
-
-export const useCreateUser = (userData) => {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const isMounted = useRef(true);
-
-  useEffect(() => {
-    if(isMounted.current) {
-      isMounted.current = false;
-      return;
-    }
-
-    if (userData && userData.name && userData.age) {
-      setLoading(true);
-      useCreateUserService(userData)
-        .then(() => setLoading(false))
-        .catch(err => {
-          setError(err.message);
-          setLoading(false);
-        });
-    }
-  }, [userData]);
+  const createUser = (userData) => {
+    setLoading(true);
+    createUserService(userData)
+      .then(() => {
+        loadUsers();
+      })
+      .catch(err => {
+        setError(err.message);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
 
   useEffect(() => {
-    return () => {
-      isMounted.current = false;
-    };
+    loadUsers();
   }, []);
 
-  return { loading, error };
-}
+  return { users, loading, error, createUser };
+};
