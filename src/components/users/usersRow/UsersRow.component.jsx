@@ -3,7 +3,7 @@ import { useUsers } from "../../../hooks/useUser.hook";
 import './UsersRow.component.css'
 
 export const UsersRow = () => {
-  const { loading, error, data } = useUsers();
+  const { loading, error, users } = useUsers();
 
     if (loading) {
       return (
@@ -22,7 +22,7 @@ export const UsersRow = () => {
     }
 
     return (
-      data.map((user, index) => (
+      users.map((user, index) => (
         <tr key={index} className="user-row">
           <td>{user.name}</td>
           <td>{user.id}</td>
