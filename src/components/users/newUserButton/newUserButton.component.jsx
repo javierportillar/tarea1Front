@@ -1,8 +1,8 @@
-export const NewUserButton = ({addNewUserDiv}) => {
+export const NewUserButton = ({openCreateNewUserDiv}) => {
   
   return (
     <div>
-      <button onClick={addNewUserDiv}><a>Agregar Nuevo Usuario</a></button>
+      <button onClick={openCreateNewUserDiv}><a>Agregar Nuevo Usuario</a></button>
     </div>
   )
 }
