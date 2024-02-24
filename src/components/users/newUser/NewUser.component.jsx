@@ -1,20 +1,20 @@
 import { useRef, useState } from 'react'
 import './NewUser.component.css'
 import { CreateUserButton } from '../createUserButton/createUserButton.component'
-import { useCreateUser } from '../../../hooks/useUser.hook'
+import { useUsers } from '../../../hooks/useUser.hook'
 
-export const NewUser = ({ closeNewUser }) => {
+export const NewUser = ({ closeCreateNewUser }) => {
 
   const nameRef = useRef(null);
   const ageRef = useRef(null);
-  const [userData, setUserData] = useState({});
-  const { loading, error } = useCreateUser(userData);
+  const {loading, error, createUser } = useUsers();
+  
   const handleSubmit = () => {
     const data = {
       name: nameRef.current.value,
       age: Number(ageRef.current.value)
     }
-    setUserData(data);
+    createUser(data);
   }
 
   if (loading) return <div>Loading...</div>;
@@ -23,7 +23,7 @@ export const NewUser = ({ closeNewUser }) => {
   return (
     <div className='new-user-window'>
       <div className='new-user-inputs'>
-        <button id='close-user-inputs' onClick={closeNewUser}>X</button>
+        <button id='close-user-inputs' onClick={closeCreateNewUser}>X</button>
         <h2>Escriba la información del nuevo usuario</h2>
         <input type="text" placeholder="Nombre" ref={nameRef} />
         <input type="number" placeholder="Edad" ref={ageRef} />
