@@ -4,16 +4,17 @@
     border-collapse: collapse;
 
     thead {
-      tr {
+      tr:nth-child(1) {
         background-color: #f7df94;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        font-weight: bold;
       }
     }
     th,
     td {
       border: 1px solid #000;
       padding: 10px;
-      text-align: left;
+      text-align: center;
     }
   }
 }

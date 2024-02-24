@@ -1,5 +1,23 @@
 .user-row {
+  .user-button {
+    margin: 0 .5em 0 0.5em;
+    
+  }
+
+  .user-button:nth-child(1){
+    background-color: grey;
+    border: 1px black solid;
+  }
+  .user-button:nth-child(2){
+    background-color: red;
+    border: 1px black solid;
+  }
+
   td {
-    font-weight: bold;
+    font-style: italic;
+  }
+
+  td:nth-child(1) {
+    font-weight: bold
   }
 }
