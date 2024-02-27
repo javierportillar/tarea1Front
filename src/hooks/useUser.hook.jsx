@@ -38,10 +38,9 @@ export const useUsers = () => {
     setSelectedUser(user);
   }
 
-  const updateUser = (id,userData) => {
-  
+  const updateUser = (id, userData) => {
     setLoading(true);
-    updateUserService(id,userData)
+    updateUserService(id, userData)
       .then(() => { loadUsers() })
       .catch(err => { setError(err.message) })
       .finally(() => { setLoading(false) });
