@@ -1,7 +1,28 @@
-const url = 'http://localhost:4400/users'
+const url = 'http://localhost:4400/users/'
 
 export const fetchUsersService = () => {
   return fetch(url).then(datos => datos.json())
+}
+
+export const updateUserService = (id, userData) => {
+  const urlFetch = url+id;
+  return fetch(urlFetch,{
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(userData),
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .catch(error => {
+    console.error("Error in fetch: ", error);
+    throw error;
+  });
 }
 
 export const createUserService = (userData) => {
@@ -23,4 +44,3 @@ export const createUserService = (userData) => {
     throw error;
   });
 };
-
