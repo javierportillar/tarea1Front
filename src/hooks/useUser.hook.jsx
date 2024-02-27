@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import { fetchUsersService, createUserService } from '../services/users.service';
+import { fetchUsersService, createUserService, fetchUserService, updateUserService } from '../services/users.service';
 
 export const useUsers = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [selectedUser, setSelectedUser] = useState([]);
 
   const loadUsers = () => {
     setLoading(true);
@@ -33,9 +34,22 @@ export const useUsers = () => {
       });
   };
 
+  const userChoosed = (user) => {
+    setSelectedUser(user);
+  }
+
+  const updateUser = (id,userData) => {
+  
+    setLoading(true);
+    updateUserService(id,userData)
+      .then(() => { loadUsers() })
+      .catch(err => { setError(err.message) })
+      .finally(() => { setLoading(false) });
+  }
+
   useEffect(() => {
     loadUsers();
   }, []);
 
-  return { users, loading, error, createUser };
+  return { users, loading, error, createUser, updateUser, userChoosed, selectedUser };
 };
