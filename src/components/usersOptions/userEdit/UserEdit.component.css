@@ -1,0 +1,47 @@
+.edit-user-window {
+  top: 0;
+  left: 0;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.edit-user-inputs {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid orange;
+  background-color: rgba(233, 178, 26, 0.8);
+  border-radius: 10px;
+  padding: 1em;
+  margin: 0.5em;
+  align-items: center;
+
+  h2{
+    margin-top: 0;
+  }
+}
+
+.edit-user-inputs input {
+  background-color: white;
+  color: blue;
+  font-weight: 800;
+  width: 70%;
+  padding: 0.5em;
+  font-size: 0.8em;
+  margin: 1em 0 1em 0;
+}
+
+.edit-user-inputs div {
+  width: 60%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  
+}
+
