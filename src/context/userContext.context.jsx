@@ -1,14 +1,14 @@
-import React, { createContext, useContext } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import { useUsers } from '../hooks/useUser.hook';
 
 const UserContext = createContext();
 
-export const UserProvider = ({children}) => {
+export const UserProvider = ({ children }) => {
   const useUsersHook = useUsers();
 
   return (
     <UserContext.Provider value={useUsersHook}>
-        {children}
+      {children}
     </UserContext.Provider>
   );
 };
