@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { fetchUsersService, createUserService, fetchUserService, updateUserService } from '../services/users.service';
+import { fetchUsersService, createUserService, deleteUserService, updateUserService } from '../services/users.service';
 
 export const useUsers = () => {
   const [users, setUsers] = useState([]);
@@ -46,9 +46,17 @@ export const useUsers = () => {
       .finally(() => { setLoading(false) });
   }
 
+  const deleteUser = (id) => {
+    setLoading(true);
+    deleteUserService(id)
+    .then(() => { loadUsers() })
+    .catch(err=>{setError(err.message)})
+    .finally(() => { setLoading(false) });
+  }
+
   useEffect(() => {
     loadUsers();
   }, []);
 
-  return { users, loading, error, createUser, updateUser, userChoosed, selectedUser };
+  return { users, loading, error, createUser, updateUser, userChoosed, selectedUser, deleteUser };
 };
