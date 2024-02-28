@@ -4,6 +4,7 @@ import { NewUserButton } from "../components/users/newUserButton/newUserButton.c
 import { NewUser } from "../components/users/newUser/NewUser.component";
 import { UserProvider } from "../context/userContext.context";
 import { UserEditComponent } from "../components/usersOptions/userEdit/UserEdit.component";
+import { DeleteUser } from "../components/usersOptions/userDelete/deleteUser.component";
 import './usersHome.page.css';
 
 export const UsersHomePage = () => {
@@ -21,13 +22,12 @@ export const UsersHomePage = () => {
   }
 
   const openDeletUserState = () => {
-    
+    setDeletUserState(true)
   }
 
   const closeDeletUserState = () => {
-
+    setDeletUserState(false)
   }
-
 
   const openCreateNewUserDiv = () => {
     setAddUserState(true);
@@ -41,10 +41,11 @@ export const UsersHomePage = () => {
     <div className="user-page">
       <h1 className="user-tittle">Los usuarios son los siguientes:</h1>
       <UserProvider>
-        <UsersTable openEditUserState={openEditUserState} />
+        <UsersTable openEditUserState={openEditUserState} openDeletUserState={openDeletUserState}/>
         <NewUserButton openCreateNewUserDiv={openCreateNewUserDiv} />
         {addUserState && (<NewUser closeCreateNewUser={closeCreateNewUser} />)}
         {editUserState && (<UserEditComponent closeEditUserState = {closeEditUserState}/>)}
+        {deletUserState && (<DeleteUser closeDeletUserState = {closeDeletUserState}/>)}
       </UserProvider>
     </div>
   )
