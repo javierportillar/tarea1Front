@@ -19,8 +19,8 @@ export const UserEditComponent = ({ closeEditUserState }) => {
 
   const sendData = () => {
     const data = {
-      name: nameInputRef.current.value,
-      age: Number(ageInputRef.current.value)
+      name: nameInputRef.current.value !== '' ? nameInputRef.current.value : selectedUser.name,
+    age: ageInputRef.current.value !== '' ? Number(ageInputRef.current.value) : selectedUser.age
     }
     return data;
   }
