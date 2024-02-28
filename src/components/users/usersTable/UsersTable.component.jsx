@@ -1,7 +1,7 @@
 import './UsersTable.component.css'
 import { UsersRow } from "../usersRow/UsersRow.component";
 
-export const UsersTable = ({ openEditUserState }) => {
+export const UsersTable = ({ openEditUserState, openDeletUserState }) => {
 
   return (
     <div className="user-table">
@@ -15,7 +15,7 @@ export const UsersTable = ({ openEditUserState }) => {
           </tr>
         </thead>
         <tbody>
-          <UsersRow openEditUserState={openEditUserState} />
+          <UsersRow openEditUserState={openEditUserState} openDeletUserState={openDeletUserState} />
         </tbody>
       </table>
     </div>
