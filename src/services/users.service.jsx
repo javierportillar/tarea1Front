@@ -44,3 +44,8 @@ export const createUserService = (userData) => {
     throw error;
   });
 };
+
+export const deleteUserService = (id) => {
+  const urlFetch = url + id;
+  return fetch(urlFetch, { method: 'DELETE' })
+}
