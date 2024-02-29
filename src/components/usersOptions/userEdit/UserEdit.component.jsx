@@ -39,7 +39,7 @@ export const UserEditComponent = ({ closeEditUserState }) => {
           <input type="number" placeholder={age} ref={ageInputRef} />
         </div>
       </div>
-      <EditUserButton selectedUser={selectedUser} sendData={sendData} />
+      <EditUserButton selectedUser={selectedUser} sendData={sendData} closeEditUserState={closeEditUserState}/>
     </div>
   )
 }
