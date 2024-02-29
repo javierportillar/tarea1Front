@@ -1,7 +1,9 @@
 
-
-export const CreateUserButton = ({handleSubmit}) => {
+export const CreateUserButton = ({ handleSubmit, closeCreateNewUser }) => {
   return (
-    <button onClick={handleSubmit}>Guardar</button>
+    <button onClick={() => {
+      handleSubmit();
+      closeCreateNewUser();
+    }}>Guardar</button>
   )
 }
