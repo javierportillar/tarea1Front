@@ -7,9 +7,9 @@ export const useUsers = () => {
   const [error, setError] = useState(null);
   const [selectedUser, setSelectedUser] = useState([]);
 
-  const loadUsers = () => {
+  async function loadUsers(){
     setLoading(true);
-    fetchUsersService()
+    await fetchUsersService()
       .then(data => {
         setUsers(data);
         setLoading(false);
@@ -20,9 +20,9 @@ export const useUsers = () => {
       });
   };
 
-  const createUser = (userData) => {
+  async function createUser(userData){
     setLoading(true);
-    createUserService(userData)
+    await createUserService(userData)
       .then(() => {
         loadUsers();
       })
@@ -34,21 +34,21 @@ export const useUsers = () => {
       });
   };
 
-  const userChoosed = (user) => {
+  async function userChoosed(user){
     setSelectedUser(user);
   }
 
-  const updateUser = (id, userData) => {
+  async function updateUser(id, userData){
     setLoading(true);
-    updateUserService(id, userData)
+    await updateUserService(id, userData)
       .then(() => { loadUsers() })
       .catch(err => { setError(err.message) })
       .finally(() => { setLoading(false) });
   }
 
-  const deleteUser = (id) => {
+  async function deleteUser(id){
     setLoading(true);
-    deleteUserService(id)
+    await deleteUserService(id)
     .then(() => { loadUsers() })
     .catch(err=>{setError(err.message)})
     .finally(() => { setLoading(false) });
