@@ -3,7 +3,7 @@ import { UsersTable } from "../components/users/usersTable/UsersTable.component"
 import { NewUserButton } from "../components/users/newUserButton/newUserButton.component";
 import { NewUser } from "../components/users/newUser/NewUser.component";
 import { UserProvider } from "../context/userContext.context";
-import { UserEditComponent } from "../components/usersOptions/userEdit/UserEdit.component";
+import { UserEditComponent } from "../components/usersOptions/userEdit/userEdit.component";
 import { DeleteUser } from "../components/usersOptions/userDelete/deleteUser.component";
 import './usersHome.page.css';
 
