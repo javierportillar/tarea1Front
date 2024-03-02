@@ -32,8 +32,8 @@ export const UsersRow = ({ openEditUserState, openDeletUserState }) => {
   }
 
   return (
-    users.map((user, index) => (
-      <tr key={index} className="user-row">
+    users.map((user ) => (
+      <tr key={user.id} className="user-row">
         <td>{user.name}</td>
         <td>{user.id}</td>
         <td>{user.age}</td>
