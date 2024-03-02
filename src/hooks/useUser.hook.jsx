@@ -7,7 +7,7 @@ export const useUsers = () => {
   const [error, setError] = useState(null);
   const [selectedUser, setSelectedUser] = useState([]);
 
-  async function loadUsers(){
+  async function loadUsers() {
     setLoading(true);
     await fetchUsersService()
       .then(data => {
@@ -20,11 +20,11 @@ export const useUsers = () => {
       });
   };
 
-  async function createUser(userData){
+  async function createUser(userData) {
     setLoading(true);
     await createUserService(userData)
-      .then(() => {
-        loadUsers();
+      .then(newUser => {
+        setUsers(prevUsers => [newUser, ...prevUsers]);
       })
       .catch(err => {
         setError(err.message);
@@ -34,24 +34,29 @@ export const useUsers = () => {
       });
   };
 
-  async function userChoosed(user){
+  async function userChoosed(user) {
     setSelectedUser(user);
   }
 
-  async function updateUser(id, userData){
+  async function updateUser(id, userData) {
     setLoading(true);
     await updateUserService(id, userData)
-      .then(() => { loadUsers() })
+      .then(updateUser => {
+        setUsers(prevUsers => prevUsers.map(user => user.id === id ? updateUser : user))
+        console.log('setUsers');
+      })
       .catch(err => { setError(err.message) })
       .finally(() => { setLoading(false) });
   }
 
-  async function deleteUser(id){
+  async function deleteUser(id) {
     setLoading(true);
     await deleteUserService(id)
-    .then(() => { loadUsers() })
-    .catch(err=>{setError(err.message)})
-    .finally(() => { setLoading(false) });
+      .then(() => {
+        setUsers(prevUsers => prevUsers.filter(user=> user.id !== id));
+      })
+      .catch(err => { setError(err.message) })
+      .finally(() => { setLoading(false) });
   }
 
   useEffect(() => {
