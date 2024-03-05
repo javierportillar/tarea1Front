@@ -1,11 +1,13 @@
 import './App.css'
-import {RouterC} from './routes/router.component'
-
+import { RouterC } from './routes/router.component'
+import { UserProvider } from "./context/userContext.context";
 function App() {
 
   return (
     <>
-      <RouterC/>
+      <UserProvider>
+        <RouterC />
+      </UserProvider>
     </>
   )
 }
