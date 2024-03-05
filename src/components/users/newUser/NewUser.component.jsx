@@ -3,11 +3,12 @@ import './NewUser.component.css'
 import { CreateUserButton } from '../createUserButton/createUserButton.component'
 import { useUserContext } from '../../../context/userContext.context'
 
-export const NewUser = ({ closeCreateNewUser }) => {
+export const NewUser = () => {
 
   const nameRef = useRef(null);
   const ageRef = useRef(null);
-  const { loading, error, createUser } = useUserContext();
+  const { loading, error, createUser, closeCreateNewUser } = useUserContext();
+
 
   const handleSubmit = () => {
     const data = {
@@ -31,7 +32,7 @@ export const NewUser = ({ closeCreateNewUser }) => {
         <h2>Escriba la información del nuevo usuario</h2>
         <input type="text" placeholder="Nombre" ref={nameRef} />
         <input type="number" placeholder="Edad" ref={ageRef} />
-        <CreateUserButton handleSubmit={handleSubmit} closeCreateNewUser={closeCreateNewUser} />
+        <CreateUserButton handleSubmit={handleSubmit}/>
       </div>
     </div>
   )
