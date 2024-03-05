@@ -1,5 +1,8 @@
+import { useUserContext } from '../../../context/userContext.context'
 import './newUserButton.component.css'
-export const NewUserButton = ({openCreateNewUserDiv}) => {
+export const NewUserButton = () => {
+
+  const {openCreateNewUserDiv} = useUserContext();
   
   return (
     <div className="new-user-button">
