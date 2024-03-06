@@ -1,15 +1,14 @@
-import { useEffect, useState } from 'react';
 import './UsersRow.component.css'
 import { useUserContext } from "../../../context/userContext.context";
 
-export const UsersRow = ({ openEditUserState, openDeletUserState }) => {
+export const UsersRow = () => {
 
-  const { loading, error, users, userChoosed } = useUserContext();
+  const { loading, error, users, userChoosed, openEditUserState, openDeletUserState } = useUserContext();
 
   if (loading) {
     return (
       <tr>
-        <td colSpan="3">Loading...</td>
+        <td colSpan="4">Loading...</td>
       </tr>
     );
   }
@@ -17,18 +16,13 @@ export const UsersRow = ({ openEditUserState, openDeletUserState }) => {
   if (error) {
     return (
       <tr>
-        <td colSpan="3">Error: {error}</td>
+        <td colSpan="4">Error: {error}</td>
       </tr>
     );
   }
 
   const getUserFcn = (user, param) => {
-    userChoosed(user);
-    if (param === 'edit') {
-      openEditUserState();
-    } else{
-      openDeletUserState();
-    }
+    userChoosed(user,param);
   }
 
   return (
