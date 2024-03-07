@@ -2,9 +2,9 @@ import './deleteUser.component.css'
 import { useUserContext } from '../../../context/userContext.context'
 import { DeleteUserButton } from '../deleteUserButton/deleteUserButton';
 
-export const DeleteUser = ({ closeDeletUserState }) => {
+export const DeleteUser = ({ }) => {
 
-  const { selectedUser, deleteUser } = useUserContext();
+  const { selectedUser, deleteUser, closeDeletUserState } = useUserContext();
 
 
   return (
@@ -19,7 +19,7 @@ export const DeleteUser = ({ closeDeletUserState }) => {
           <p>age:{selectedUser.age}</p>
         </div>
         <h2>¿Está segur@ que desea confirmar los cambios?</h2>
-        <DeleteUserButton selectedUser={selectedUser} deleteUser={deleteUser} closeDeletUserState={closeDeletUserState}/>
+        <DeleteUserButton selectedUser={selectedUser} deleteUser={deleteUser}/>
       </div>
     </div>
   )
