@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import { useUserContext } from '../../../context/userContext.context';
 import './EditUserSend.css';
 
-export const EditUserButton = ({ selectedUser, sendData, closeEditUserState }) => {
+export const EditUserButton = ({ selectedUser, sendData }) => {
 
-  const {updateUser} = useUserContext();
+  const {updateUser, closeEditUserState} = useUserContext();
   const [id, setId] = useState('');
 
   useEffect(()=>{
