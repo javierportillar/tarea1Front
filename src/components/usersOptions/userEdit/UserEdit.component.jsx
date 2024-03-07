@@ -3,9 +3,9 @@ import './UserEdit.component.css'
 import { EditUserButton } from "../editUserSend/EditUserSend";
 import { useUserContext } from "../../../context/userContext.context";
 
-export const UserEditComponent = ({ closeEditUserState }) => {
+export const UserEditComponent = ({  }) => {
 
-  const { selectedUser } = useUserContext();
+  const { selectedUser, closeEditUserState } = useUserContext();
   const [name, setName] = useState('');
   const [age, setAge] = useState();
 
@@ -39,7 +39,7 @@ export const UserEditComponent = ({ closeEditUserState }) => {
           <input type="number" placeholder={age} ref={ageInputRef} />
         </div>
       </div>
-      <EditUserButton selectedUser={selectedUser} sendData={sendData} closeEditUserState={closeEditUserState}/>
+      <EditUserButton selectedUser={selectedUser} sendData={sendData}/>
     </div>
   )
 }
